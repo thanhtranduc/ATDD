@@ -1,7 +1,7 @@
 require 'postgres'
 
-Before('@unit_list') do
-  require_relative "../../features/test_data/unit_list"
+Before('@customer_order') do
+  require_relative "../../features/test_data/CustomerProfileTestData"
 end
 
 After('@unit_list') do

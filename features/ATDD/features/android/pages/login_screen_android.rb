@@ -2,7 +2,7 @@ require 'calabash-android/abase'
 
 class LoginScreen < Calabash::ABase
   def trait
-    "* id:'launchScreen'"
+    "* id:'login_main'"
   end
 
 
@@ -17,8 +17,8 @@ class LoginScreen < Calabash::ABase
     self
   end
 
-  def customerLogin(customer)
-    touch("button text:'#{customer}'")
+  def userLogin(customer)
+    query("* id:'login_etUserName'",setText:"#{value}")
     sleep(STEP_PAUSE)
   end
 

@@ -4,6 +4,7 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:id="@+id/login_main"
               android:background="@android:color/white"
               android:gravity="center">
     <LinearLayout
@@ -40,6 +41,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/small_margin"
                     android:hint="@string/password"
+                    android:inputType="textPassword"
                     android:singleLine="true"/>
         </LinearLayout>
         <Button

@@ -22,7 +22,9 @@ public class Account
     @AdditionalAnnotation.DefaultSortOrder
     Long id;
     @DatabaseField
-    String username;
+    String displayName;
+    @DatabaseField
+    String userName;
     @DatabaseField
     String password;
 
@@ -30,16 +32,18 @@ public class Account
     {
     }
 
-    public Account(String username, String password)
+    public Account(String displayName, String userName, String password)
     {
-        this.username = username;
+        this.displayName = displayName;
+        this.userName = userName;
         this.password = password;
     }
 
     public ContentValues getContentValues()
     {
         ContentValues values = new ContentValues();
-        values.put(AccountContract.USERNAME, username);
+        values.put(AccountContract.DISPLAYNAME, displayName);
+        values.put(AccountContract.USERNAME, userName);
         values.put(AccountContract.PASSWORD, password);
         return values;
     }
@@ -54,14 +58,24 @@ public class Account
         this.id = id;
     }
 
-    public String getUsername()
+    public String getDisplayName()
     {
-        return username;
+        return displayName;
     }
 
-    public void setUsername(String username)
+    public void setDisplayName(String displayName)
     {
-        this.username = username;
+        this.displayName = displayName;
+    }
+
+    public String getUserName()
+    {
+        return userName;
+    }
+
+    public void setUserName(String userName)
+    {
+        this.userName = userName;
     }
 
     public String getPassword()
@@ -88,7 +102,11 @@ public class Account
 
         Account account = (Account) o;
 
-        if (username != null ? !username.equals(account.username) : account.username != null)
+        if (displayName != null ? !displayName.equals(account.displayName) : account.displayName != null)
+        {
+            return false;
+        }
+        if (userName != null ? !userName.equals(account.userName) : account.userName != null)
         {
             return false;
         }

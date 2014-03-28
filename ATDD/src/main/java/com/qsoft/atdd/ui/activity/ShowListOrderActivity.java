@@ -1,8 +1,10 @@
 package com.qsoft.atdd.ui.activity;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.widget.ListView;
+
 import com.googlecode.androidannotations.annotations.AfterViews;
 import com.googlecode.androidannotations.annotations.Click;
 import com.googlecode.androidannotations.annotations.EActivity;
@@ -20,6 +22,7 @@ import java.util.List;
 @EActivity(R.layout.list_goods)
 public class ShowListOrderActivity extends FragmentActivity
 {
+
     AddOrderFragment addOrderFragment;
 
     @ViewById(R.id.list_goods_lvListOrder)
@@ -50,7 +53,6 @@ public class ShowListOrderActivity extends FragmentActivity
         lvListOrders.setAdapter(new OrderAdapter(this,-1,orderList));
 
     }
-
     @Click(R.id.list_goods_btAdd)
     void addOrder()
     {
@@ -59,5 +61,11 @@ public class ShowListOrderActivity extends FragmentActivity
         addOrderFragment.show(fragmentManager,"abc");
     }
 
+    @Click(R.id.list_order_ivLogOut)
+    void logout()
+    {
+        Intent intent = new Intent(this,MainActivity_.class);
+        startActivity(intent);
+    }
 
 }
