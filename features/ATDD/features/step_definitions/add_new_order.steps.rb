@@ -1,5 +1,7 @@
 Given(/^I am on order list screen of (.*)$/) do |customer|
   @loginScreen = page(LoginScreen).await
+  #@loginScreen.screen_type("Login")
+  #@loginScreen.await
   puts customer
   @loginScreen.userLogin("username", customer)
   pass = CUSTOMERS[customer.to_sym][:password]

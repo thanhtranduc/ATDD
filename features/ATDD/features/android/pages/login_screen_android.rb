@@ -1,8 +1,23 @@
 require 'calabash-android/abase'
 
 class LoginScreen < Calabash::ABase
+
+  #def screen_type(page_type)
+  #  @page_type = page_type
+  #end
+  #
+  #def get_screen_type
+  #  @page_type
+  #end
+
   def trait
-    "* id:'login_main'"
+    #trait_string = ''
+    #if @page_type == "Login"
+      trait_string = "* id:'login_main'"
+    #else
+    #  trait_string = "* id:'dialog_add_order_main'"
+    #end
+    #trait_string
   end
 
 

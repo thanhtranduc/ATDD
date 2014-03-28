@@ -18,27 +18,27 @@ CUSTOMERS = {
 ORDER={
     :Order1 => {
         :order_code => '0001',
-        :amount => '12,000',
+        :amount => '12,000.00',
         :description => '',
     },
     :Order2 => {
         :order_code => '0002',
-        :amount => '36,000',
+        :amount => '36,000.00',
         :description => '',
     },
     :Order3 => {
         :order_code => '0003',
-        :amount => '125,000',
+        :amount => '125,000.00',
         :description => '',
     },
     :Order4 => {
         :order_code => '0004',
-        :amount => '100,000',
+        :amount => '100,000.00',
         :description => 'description1',
     },
     :Order5 => {
         :order_code => '0005',
-        :amount => '103,000',
+        :amount => '103,000.00',
         :description => 'description2',
     }
 }

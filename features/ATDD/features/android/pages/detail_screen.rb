@@ -21,7 +21,7 @@ class UserDetail < Calabash::ABase
     sleep(1)
     should_see_text(order[:order_code])
     sleep(1)
-    should_see_text(order[:amount])
+    should_see_text(order[:amount] + " VND")
   end
 
 end
