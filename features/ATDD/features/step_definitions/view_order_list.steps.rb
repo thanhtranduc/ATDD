@@ -1,4 +1,6 @@
 Given(/^I login successfully as '(.*)'$/) do |customer|
+  sleep(1)
+  touch("* text:'RUN SQL'")
   @loginScreen = page(LoginScreen).await
   puts customer
   @loginScreen.userLogin("userName", customer)

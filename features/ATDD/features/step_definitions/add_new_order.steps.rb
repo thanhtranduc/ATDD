@@ -1,5 +1,6 @@
 Given(/^I am on order list screen of (.*)$/) do |customer|
-
+  sleep(1)
+  touch("* text:'RUN SQL'")
   @loginScreen = page(LoginScreen).await
   puts customer
   @loginScreen.userLogin("userName", customer)

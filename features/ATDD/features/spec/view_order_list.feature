@@ -8,7 +8,7 @@ Feature: View customer's orders
   Scenario: dummy
 
   Scenario : View customer orders
-    Given I login successfully as 'Tim'
+    Given I login successfully as 'tim'
     Then I should see display name and number of orders
     And I should see order price of customer
       | order  |

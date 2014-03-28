@@ -17,7 +17,7 @@ Feature: Add  order
     Then I should see new order in my order list
   Examples:
     | Customer |
-    | Tim      |
+    | tim      |
 
   Scenario Outline: Add information  of order unsuccessfully
     Given I am on order list screen of <Customer>
@@ -29,7 +29,7 @@ Feature: Add  order
     Then I should see the error message "order code must not null, please try again"
   Examples:
     | Customer |
-    | Tim      |
+    | tim      |
 
   Scenario Outline: Add information  of order unsuccessfully
     Given I am on order list screen of <Customer>
@@ -41,4 +41,4 @@ Feature: Add  order
     Then I should see the error message "amount must not null, please try again"
   Examples:
     | Customer |
-    | Tim      |
+    | tim      |
