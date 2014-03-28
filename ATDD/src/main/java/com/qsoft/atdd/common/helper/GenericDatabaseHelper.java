@@ -200,12 +200,12 @@ public class GenericDatabaseHelper extends OrmLiteSqliteOpenHelper
         return dao;
     }
 
-    public Dao<Account, Long> getAttachmentEquipmentDao() throws SQLException
+    public Dao<Account, Long> getAccountDao() throws SQLException
     {
         return getDao(Account.class, Long.class);
     }
 
-    public Dao<Order, Long> getEquipmentDao() throws SQLException
+    public Dao<Order, Long> getOrderDao() throws SQLException
     {
         return getDao(Order.class, Long.class);
     }

@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.provider.BaseColumns;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import com.qsoft.atdd.provider.AppContract;
+import com.qsoft.atdd.data.provider.AppContract;
 import com.tojc.ormlite.android.annotation.AdditionalAnnotation;
 
 /**
@@ -22,12 +22,18 @@ public class Account
     @AdditionalAnnotation.DefaultSortOrder
     Long id;
     @DatabaseField
-    Long username;
+    String username;
     @DatabaseField
-    Long password;
+    String password;
 
     public Account()
     {
+    }
+
+    public Account(String username, String password)
+    {
+        this.username = username;
+        this.password = password;
     }
 
     public ContentValues getContentValues()
@@ -48,24 +54,24 @@ public class Account
         this.id = id;
     }
 
-    public Long getPassword()
-    {
-        return password;
-    }
-
-    public void setPassword(Long password)
-    {
-        this.password = password;
-    }
-
-    public Long getUsername()
+    public String getUsername()
     {
         return username;
     }
 
-    public void setUsername(Long username)
+    public void setUsername(String username)
     {
         this.username = username;
+    }
+
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public void setPassword(String password)
+    {
+        this.password = password;
     }
 
     @Override

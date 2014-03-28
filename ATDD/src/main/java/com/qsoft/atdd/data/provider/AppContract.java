@@ -1,4 +1,4 @@
-package com.qsoft.atdd.provider;
+package com.qsoft.atdd.data.provider;
 
 /**
  * User: thanhtd

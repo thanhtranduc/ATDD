@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.provider.BaseColumns;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import com.qsoft.atdd.provider.AppContract;
+import com.qsoft.atdd.data.provider.AppContract;
 import com.tojc.ormlite.android.annotation.AdditionalAnnotation;
 
 /**
@@ -32,6 +32,14 @@ public class Order
 
     public Order()
     {
+    }
+
+    public Order(Long userId, Long invoiceNumber, Long amount, String description)
+    {
+        this.userId = userId;
+        this.invoiceNumber = invoiceNumber;
+        this.amount = amount;
+        this.description = description;
     }
 
     public ContentValues getContentValues()

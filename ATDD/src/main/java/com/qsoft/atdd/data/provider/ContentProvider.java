@@ -1,4 +1,4 @@
-package com.qsoft.atdd.provider;
+package com.qsoft.atdd.data.provider;
 
 import com.qsoft.atdd.common.helper.GenericDatabaseHelper;
 import com.qsoft.atdd.ui.model.Account;
