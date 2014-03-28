@@ -19,7 +19,6 @@ Then(/^I am on Add Order Screen$/) do
 end
 
 When(/^I input field '(.*)' as '(.*)'$/) do |field, value|
-
   @addOder.inputData(field,value)
 end
 
