@@ -53,6 +53,7 @@ public class MainActivity extends FragmentActivity
             if (account != null)
             {
                 Intent intent = new Intent(this, ShowListOrderActivity_.class);
+                intent.putExtra("USER_ID", account.getId());
                 startActivity(intent);
             }
             else

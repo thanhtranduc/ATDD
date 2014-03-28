@@ -34,7 +34,7 @@ public class OrderServiceImpl
         orderDAO.update(order);
     }
 
-    public Order findByUserId(Long userId) throws SQLException
+    public List<Order> findByUserId(Long userId) throws SQLException
     {
         return orderDAO.findByUserId(userId);
     }

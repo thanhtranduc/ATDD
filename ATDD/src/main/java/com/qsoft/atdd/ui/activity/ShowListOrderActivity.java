@@ -5,14 +5,15 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.widget.ListView;
 
-import com.googlecode.androidannotations.annotations.AfterViews;
-import com.googlecode.androidannotations.annotations.Click;
-import com.googlecode.androidannotations.annotations.EActivity;
-import com.googlecode.androidannotations.annotations.ViewById;
+import com.googlecode.androidannotations.annotations.*;
 import com.qsoft.atdd.R;
+import com.qsoft.atdd.service.AccountServiceImpl;
+import com.qsoft.atdd.service.OrderServiceImpl;
 import com.qsoft.atdd.ui.adapter.OrderAdapter;
 import com.qsoft.atdd.ui.dto.OrderDTO;
+import com.qsoft.atdd.ui.model.Order;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,43 +29,41 @@ public class ShowListOrderActivity extends FragmentActivity
     @ViewById(R.id.list_goods_lvListOrder)
     ListView lvListOrders;
 
-    @AfterViews
-    void init(){
-        List<OrderDTO>  orderList=new ArrayList<OrderDTO>();
-        orderList.add(new OrderDTO("0001",12000,""));
-        orderList.add(new OrderDTO("0002",36000,""));
-        orderList.add(new OrderDTO("0002",125000,""));
-        orderList.add(new OrderDTO("0002",125000,""));
-        orderList.add(new OrderDTO("0002",125000,""));
-        orderList.add(new OrderDTO("0002",125000,""));
-        orderList.add(new OrderDTO("0002",125000,""));
-        orderList.add(new OrderDTO("0002",125000,""));
-        orderList.add(new OrderDTO("0002",125000,""));
-        orderList.add(new OrderDTO("0002",125000,""));
-        orderList.add(new OrderDTO("0002",125000,""));
-        orderList.add(new OrderDTO("0002",125000,""));
-        orderList.add(new OrderDTO("0002",125000,""));
-        orderList.add(new OrderDTO("0002",125000,""));
-        orderList.add(new OrderDTO("0002",125000,""));
-        orderList.add(new OrderDTO("0002",125000,""));
-        orderList.add(new OrderDTO("0002",125000,""));
-        orderList.add(new OrderDTO("0009",125000,""));
+    @Bean
+    AccountServiceImpl accountService;
 
-        lvListOrders.setAdapter(new OrderAdapter(this,-1,orderList));
+    @Bean
+    OrderServiceImpl orderService;
+
+    @AfterViews
+    void init()
+    {
+        Long userID = getIntent().getExtras().getLong("USER_ID");
+
+        try
+        {
+            List<Order> orderList = orderService.findByUserId(userID);
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+//        lvListOrders.setAdapter(new OrderAdapter(this, -1, orderList));
 
     }
+
     @Click(R.id.list_goods_btAdd)
     void addOrder()
     {
         FragmentManager fragmentManager = getSupportFragmentManager();
         addOrderFragment = new AddOrderFragment_();
-        addOrderFragment.show(fragmentManager,"abc");
+        addOrderFragment.show(fragmentManager, "abc");
     }
 
     @Click(R.id.list_order_ivLogOut)
     void logout()
     {
-        Intent intent = new Intent(this,MainActivity_.class);
+        Intent intent = new Intent(this, MainActivity_.class);
         startActivity(intent);
     }
 
