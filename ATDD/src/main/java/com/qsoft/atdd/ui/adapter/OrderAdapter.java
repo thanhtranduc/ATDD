@@ -23,7 +23,6 @@ public class OrderAdapter extends ArrayAdapter<Order>
 
     TextView tvOrderCode;
     TextView tvAmount;
-    TextView tvDescription;
 
     public OrderAdapter(Context context, int textViewResourceId, List<Order> orderList)
     {
@@ -49,7 +48,6 @@ public class OrderAdapter extends ArrayAdapter<Order>
             showView(order.getOrderCode(), tvOrderCode);
             String amount=order.getAmount()+"";
             showView(amount, tvAmount);
-            showView(order.getDescription(), tvDescription);
         }
         return v;
     }
@@ -71,7 +69,6 @@ public class OrderAdapter extends ArrayAdapter<Order>
     {
         tvOrderCode = (TextView) v.findViewById(R.id.list_item_tvOrderNumber);
         tvAmount = (TextView) v.findViewById(R.id.list_item_tvAmount);
-        tvDescription = (TextView) v.findViewById(R.id.list_item_description);
     }
 
 }

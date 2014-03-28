@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 
@@ -79,8 +80,8 @@ public class ShowListOrderActivity extends FragmentActivity
             }
             tvTotalPrice.setText(totalPrice + "");
             lvListOrders.setAdapter(new OrderAdapter(this, -1, orderList));
-            lvListOrders.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
-                    View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+            lvListOrders.measure(ViewGroup.MeasureSpec.makeMeasureSpec(0, ViewGroup.MeasureSpec.UNSPECIFIED),
+                    ViewGroup.MeasureSpec.makeMeasureSpec(0, ViewGroup.MeasureSpec.UNSPECIFIED));
 
         }
         catch (SQLException e)
