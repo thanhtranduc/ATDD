@@ -1,6 +1,7 @@
 package com.qsoft.atdd.fake.dto;
 
 import com.google.gson.annotations.SerializedName;
+import com.qsoft.atdd.ui.model.Order;
 
 import java.util.List;
 
@@ -46,5 +47,10 @@ public class OrderDTO
     public void setDescription(String description)
     {
         this.description = description;
+    }
+
+    public Order toOrder(Long userId)
+    {
+        return new Order(userId, orderCode, amount, description);
     }
 }
