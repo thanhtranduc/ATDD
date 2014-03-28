@@ -11,13 +11,14 @@ Feature: Add  order
     And I select add new order
     Then I am on Add Order Screen
 
-    When I input field 'order_code' as '00111'
-    And I input field 'amount' as '20000'
+    When I input 'order_code' as '00111'
+    And I input 'amount' as '20000'
     And I decide to Save this equipment
     Then I should see new order in my order list
   Examples:
     | Customer |
     | tim      |
+    | john     |
 
   Scenario Outline: Add information  of order unsuccessfully
     Given I am on order list screen of <Customer>
@@ -30,6 +31,7 @@ Feature: Add  order
   Examples:
     | Customer |
     | tim      |
+    | john     |
 
   Scenario Outline: Add information  of order unsuccessfully
     Given I am on order list screen of <Customer>
@@ -42,3 +44,4 @@ Feature: Add  order
   Examples:
     | Customer |
     | tim      |
+    | john     |

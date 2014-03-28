@@ -1,6 +1,5 @@
 When(/^I input '(.*)' as '(.*)'$/) do |field, value|
-  @loginScreen = page(LoginScreen).await
-  @loginScreen.userLogin(field, value)
+  input_data(field, value)
 end
 
 When(/^I decide to (Cancel|Save) this equipment$/) do |button|

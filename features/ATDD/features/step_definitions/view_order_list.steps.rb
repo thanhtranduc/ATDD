@@ -43,6 +43,8 @@ And(/^I should see order price of customer and total price$/) do |table|
     puts row_price
     @user_detail.check_order_exist(row_price, msg = "order '#{row_hash}' does not rendered" )
   end
-  expect_total = format_money("%.2f"%(total)).to_s +" VNĐ"
+  puts "aaaaaaaaaaaa"
+  puts format_money("%.2f"%(total)).to_s
+  expect_total = format_money("%.2f"%(total)).to_s + ' VND'
   should_see_text(expect_total)
 end
