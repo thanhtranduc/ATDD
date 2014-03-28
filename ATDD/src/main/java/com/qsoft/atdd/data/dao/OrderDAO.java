@@ -56,14 +56,13 @@ public class OrderDAO
         orderDao.update(order);
     }
 
-    public Order findByUserId(Long userId) throws SQLException
+    public List<Order> findByUserId(Long userId) throws SQLException
     {
         Dao<Order, Long> orderDao = singletonDatabaseHelp.getGenericDatabaseHelper().getOrderDao();
         QueryBuilder<Order, Long> queryBuilder = orderDao.queryBuilder();
         queryBuilder.where()
                 .eq(OrderContract.USERID, userId);
-        queryBuilder.limit(1l);
         PreparedQuery<Order> preparedQueryOrder = queryBuilder.prepare();
-        return orderDao.queryForFirst(preparedQueryOrder);
+        return orderDao.query(preparedQueryOrder);
     }
 }

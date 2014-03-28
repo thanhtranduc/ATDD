@@ -42,6 +42,7 @@
                     android:layout_marginLeft="@dimen/small_margin"
                     android:hint="@string/password"
                     android:password="true"
+                    android:inputType="textPassword"
                     android:singleLine="true"/>
         </LinearLayout>
         <Button

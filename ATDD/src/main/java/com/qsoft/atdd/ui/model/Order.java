@@ -24,9 +24,9 @@ public class Order
     @DatabaseField
     Long userId;
     @DatabaseField
-    Long invoiceNumber;
+    String orderCode;
     @DatabaseField
-    Long amount;
+    String amount;
     @DatabaseField
     String description;
 
@@ -34,22 +34,12 @@ public class Order
     {
     }
 
-    public Order(Long userId, Long invoiceNumber, Long amount, String description)
+    public Order(Long userId, String orderCode, String amount, String description)
     {
         this.userId = userId;
-        this.invoiceNumber = invoiceNumber;
+        this.orderCode = orderCode;
         this.amount = amount;
         this.description = description;
-    }
-
-    public ContentValues getContentValues()
-    {
-        ContentValues values = new ContentValues();
-        values.put(OrderContract.USERID, userId);
-        values.put(OrderContract.INVOICENUMBER, invoiceNumber);
-        values.put(OrderContract.AMOUNT, amount);
-        values.put(OrderContract.DESCRIPTION, description);
-        return values;
     }
 
     public Long getId()
@@ -72,22 +62,22 @@ public class Order
         this.userId = userId;
     }
 
-    public Long getInvoiceNumber()
+    public String getOrderCode()
     {
-        return invoiceNumber;
+        return orderCode;
     }
 
-    public void setInvoiceNumber(Long invoiceNumber)
+    public void setOrderCode(String orderCode)
     {
-        this.invoiceNumber = invoiceNumber;
+        this.orderCode = orderCode;
     }
 
-    public Long getAmount()
+    public String getAmount()
     {
         return amount;
     }
 
-    public void setAmount(Long amount)
+    public void setAmount(String amount)
     {
         this.amount = amount;
     }
@@ -109,21 +99,13 @@ public class Order
         {
             return true;
         }
-        if (!(o instanceof Order))
+        if (o == null || getClass() != o.getClass())
         {
             return false;
         }
 
         Order order = (Order) o;
 
-        if (userId != null ? !userId.equals(order.userId) : order.userId != null)
-        {
-            return false;
-        }
-        if (invoiceNumber != null ? !invoiceNumber.equals(order.invoiceNumber) : order.invoiceNumber != null)
-        {
-            return false;
-        }
         if (amount != null ? !amount.equals(order.amount) : order.amount != null)
         {
             return false;
@@ -132,6 +114,25 @@ public class Order
         {
             return false;
         }
+        if (orderCode != null ? !orderCode.equals(order.orderCode) : order.orderCode != null)
+        {
+            return false;
+        }
+        if (userId != null ? !userId.equals(order.userId) : order.userId != null)
+        {
+            return false;
+        }
+
         return true;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        int result = userId != null ? userId.hashCode() : 0;
+        result = 31 * result + (orderCode != null ? orderCode.hashCode() : 0);
+        result = 31 * result + (amount != null ? amount.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        return result;
     }
 }

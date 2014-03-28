@@ -1,32 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/list_order_selection"
                 android:orientation="vertical"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp">
+
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/list_item_IvArrow"
+            android:background="@drawable/bt_next_blue"
+            android:contentDescription="@string/app_name"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            />
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/list_order_selection"
+            android:orientation="vertical"
+            android:id="@+id/list_item_lvOrder"
+            android:layout_toLeftOf="@id/list_item_IvArrow"
+            android:layout_marginRight="5dp">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:id="@+id/list_item_tvOrderNumber"
+                    android:text="@string/orderCode">
+            </TextView>
+
+            <TextView
+                    android:id="@+id/list_item_tvAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/order_price">
+            </TextView>
+        </RelativeLayout>
+
+        <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@android:color/white">
-    <TextView
-            android:id="@+id/list_order_tvOrderName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/order"
-            android:textSize="@dimen/size_text_header_info"
-            android:textColor="@android:color/black"
-            />
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:id="@+id/list_item_description"
+                android:text="@string/description"
+                android:singleLine="true"
+                android:ellipsize="end"/>
+    </LinearLayout>
+
     <ImageView
-            android:id="@+id/list_order_ivShowDetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/small_margin"
-            android:background="@drawable/bt_next_blue"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"/>
-    <TextView
-            android:id="@+id/list_order_tvOrderPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toLeftOf="@id/list_order_ivShowDetail"
-            android:text="@string/order_price"
-            android:textSize="@dimen/size_text_header_info"
-            android:textColor="@android:color/black"/>
+            android:layout_below="@id/list_item_lvOrder"
+            android:background="@drawable/line_horiz"
+            android:contentDescription="@string/app_name"/>
 </RelativeLayout>
