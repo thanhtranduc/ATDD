@@ -8,7 +8,7 @@ Feature: Login
 
   Scenario : login successfully
     When I input 'userName' as 'tim'
-    And  I input 'password' as '12345678'
+    And  I input 'password' as '123456'
     And I decide to Login
     Then I should see display name and number of orders
 
