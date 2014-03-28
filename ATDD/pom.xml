@@ -1,39 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>ATDD</groupId>
-	<artifactId>ATDD</artifactId>
-	<version>1.0-SNAPSHOT</version>
-	<packaging>apk</packaging>
-	<name>ATDD</name>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>ATDD</groupId>
+    <artifactId>ATDD</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>apk</packaging>
+    <name>ATDD</name>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <platform.version>4.2.2_r2</platform.version>
-		<android.plugin.version>3.8.3-SNAPSHOT</android.plugin.version>
-	</properties>
+        <android.plugin.version>3.8.3-SNAPSHOT</android.plugin.version>
+    </properties>
 
-	<dependencies>
-		<dependency>
-			<groupId>android</groupId>
-			<artifactId>android</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>android</groupId>
+            <artifactId>android</artifactId>
             <version>${platform.version}</version>
-			<scope>provided</scope>
+            <scope>provided</scope>
+        </dependency>
+
+        <!--ormlite-->
+        <dependency>
+            <groupId>com.j256.ormlite</groupId>
+            <artifactId>ormlite-android</artifactId>
+            <version>4.47</version>
+        </dependency>
+        <dependency>
+            <groupId>com.j256.ormlite</groupId>
+            <artifactId>ormlite-core</artifactId>
+            <version>4.47</version>
+        </dependency>
+        <dependency>
+            <groupId>com.tojc.ormlite.android</groupId>
+            <artifactId>ormlite-content-provider-compiler</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.tojc.ormlite.android</groupId>
+            <artifactId>ormlite-content-provider-library</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup</groupId>
+            <artifactId>javawriter</artifactId>
+            <version>2.2.1</version>
         </dependency>
 
         <!--android annotaion-->
-            <dependency>
-                <groupId>com.googlecode.androidannotations</groupId>
-                <artifactId>androidannotations</artifactId>
-                <version>2.7.1</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.googlecode.androidannotations</groupId>
-                <artifactId>androidannotations-api</artifactId>
-                <version>2.7.1</version>
-            </dependency>
+        <dependency>
+            <groupId>com.googlecode.androidannotations</groupId>
+            <artifactId>androidannotations</artifactId>
+            <version>2.7.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.androidannotations</groupId>
+            <artifactId>androidannotations-api</artifactId>
+            <version>2.7.1</version>
+        </dependency>
         <!--support v4-->
         <dependency>
             <groupId>android.support</groupId>
@@ -42,9 +69,16 @@
             <scope>compile</scope>
         </dependency>
 
-	</dependencies>
-	<build>
-		<finalName>${project.artifactId}</finalName>
+        <!--unit test-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+            <version>4.10</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -67,5 +101,5 @@
                 </configuration>
             </plugin>
         </plugins>
-	</build>
+    </build>
 </project>
