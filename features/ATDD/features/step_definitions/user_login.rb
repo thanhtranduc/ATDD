@@ -1,6 +1,8 @@
 When(/^I input '(.*)' as '(.*)'$/) do |field, value|
-
+  @loginScreen = page(LoginScreen).await
+  @loginScreen.userLogin(value)
 end
+
 When(/^I decide to (Cancel|Save) this equipment$/) do |button|
 end
 
@@ -16,3 +18,4 @@ end
 Then(/^I should see the error message "([^"]*)"$/) do |arg|
   should_see_text(arg)
 end
+
