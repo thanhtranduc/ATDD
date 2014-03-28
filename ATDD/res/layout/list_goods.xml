@@ -1,59 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-    <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/white">
 
-        <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            <LinearLayout
-                    android:id="@+id/list_goods_llBlockInfo"
-                    style="@style/list_goods_block_info">
-
-                <TextView
-                        android:id="@+id/list_goods_tvAccountName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/account_name"
-                        android:textSize="@dimen/size_text_header_info"
-                        android:textColor="@android:color/black"/>
-
-                <TextView
-                        android:id="@+id/list_goods_tvTotalOrder"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/normal_margin"
-                        android:text="@string/total"
-                        android:textSize="@dimen/size_text_header_info"
-                        android:textColor="@android:color/black"/>
-            </LinearLayout>
-
-            <Button
-                    android:id="@+id/list_goods_btAdd"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_alignBottom="@+id/list_goods_llBlockInfo"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="@dimen/big_margin"
-                    android:background="@drawable/add"/>
-        </RelativeLayout>
-
-        <com.qsoft.atdd.ui.adapter.ExpandedListView
-                android:id="@+id/list_goods_lvListOrder"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="@dimen/normal_margin"
-                android:cacheColorHint="@null"
-                android:scrollbars="none"
-                />
+                android:background="@android:color/white">
+
+    <RelativeLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#d3d3d3">
+
+        <LinearLayout
+                android:id="@+id/list_goods_llBlockInfo"
+                style="@style/list_goods_block_info">
+
+            <TextView
+                    android:id="@+id/list_goods_tvDisplayName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/account_name"
+                    android:textSize="@dimen/size_text_header_info"
+                    android:textColor="@android:color/black"/>
+
+            <TextView
+                    android:id="@+id/list_goods_tvTotalOrder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/normal_margin"
+                    android:text="@string/total"
+                    android:textSize="@dimen/size_text_header_info"
+                    android:textColor="@android:color/black"/>
+        </LinearLayout>
+
+        <Button
+                android:id="@+id/list_goods_btAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_alignBottom="@+id/list_goods_llBlockInfo"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/big_margin"
+                android:background="@drawable/add"
+                android:layout_marginBottom="5dp"/>
+    </RelativeLayout>
+
+    <LinearLayout
+            android:id="@+id/footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true"
+            android:background="#d3d3d3">
 
         <LinearLayout
                 android:layout_width="wrap_content"
@@ -86,4 +85,13 @@
                 android:text="@string/logout"
                 android:background="@drawable/button"/>
     </LinearLayout>
-</ScrollView>
+
+    <ListView
+            android:id="@+id/list_goods_lvListOrder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/normal_margin"
+            android:layout_above="@id/footer"
+            android:layout_below="@id/header"
+            />
+</RelativeLayout>

@@ -26,7 +26,7 @@ Feature: Add  order
 
     And I input 'amount' as '20000'
     And I decide to Save this equipment
-    Then I should see the error message "order code must not null, please try again"
+    Then I should see the error message "Order code and Amount must not null, please try again"
   Examples:
     | Customer |
     | tim      |
@@ -38,7 +38,7 @@ Feature: Add  order
 
     When I input 'order_code' as '00111'
     And I decide to Save this equipment
-    Then I should see the error message "amount must not null, please try again"
+    Then I should see the error message "Order code and Amount must not null, please try again"
   Examples:
     | Customer |
     | tim      |

@@ -11,6 +11,7 @@ import com.googlecode.androidannotations.annotations.*;
 import com.qsoft.atdd.R;
 import com.qsoft.atdd.common.helper.GenericDatabaseHelper;
 import com.qsoft.atdd.common.helper.HolderSingletonFactory;
+import com.qsoft.atdd.common.utils.Const;
 import com.qsoft.atdd.fake.dto.AccountDTO;
 import com.qsoft.atdd.fake.dto.CustomerDTO;
 import com.qsoft.atdd.fake.dto.OrderDTO;
@@ -81,7 +82,8 @@ public class MainActivity extends FragmentActivity
             if (account != null)
             {
                 Intent intent = new Intent(this, ShowListOrderActivity_.class);
-                intent.putExtra("USER_ID", account.getId());
+                intent.putExtra(Const.USER_ID, account.getId());
+                intent.putExtra(Const.DISPLAY_NAME, account.getDisplayName());
                 startActivity(intent);
             }
             else
