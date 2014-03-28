@@ -4,10 +4,13 @@ import android.app.Activity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+import com.googlecode.androidannotations.annotations.AfterViews;
 import com.googlecode.androidannotations.annotations.Bean;
 import com.googlecode.androidannotations.annotations.EActivity;
 import com.googlecode.androidannotations.annotations.ViewById;
 import com.qsoft.atdd.R;
+import com.qsoft.atdd.common.helper.GenericDatabaseHelper;
+import com.qsoft.atdd.common.helper.HolderSingletonFactory;
 import com.qsoft.atdd.service.AccountServiceImpl;
 import com.qsoft.atdd.service.OrderServiceImpl;
 import com.qsoft.atdd.ui.model.Account;
@@ -21,10 +24,20 @@ public class HelloAndroidActivity extends Activity
     EditText etFileName;
 
     @Bean
+    public HolderSingletonFactory holderSingletonFactory;
+
+    @Bean
     AccountServiceImpl accountService;
 
     @Bean
     OrderServiceImpl orderService;
+
+    @AfterViews
+    void init()
+    {
+        GenericDatabaseHelper genericDatabaseHelper = new GenericDatabaseHelper(this);
+        holderSingletonFactory.setGenericDatabaseHelper(genericDatabaseHelper);
+    }
 
     public void runSQL(View view)
     {

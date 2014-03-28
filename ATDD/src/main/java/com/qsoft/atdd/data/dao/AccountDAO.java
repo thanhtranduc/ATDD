@@ -38,33 +38,34 @@ public class AccountDAO
 
     public List<Account> findAll() throws SQLException
     {
-        Dao<Account, Long> locationDao = singletonDatabaseHelp.getGenericDatabaseHelper().getAccountDao();
-        QueryBuilder<Account, Long> queryBuilder = locationDao.queryBuilder();
-        PreparedQuery<Account> preparedQueryLocation = queryBuilder.prepare();
-        return locationDao.query(preparedQueryLocation);
+        Dao<Account, Long> accountDao = singletonDatabaseHelp.getGenericDatabaseHelper().getAccountDao();
+        QueryBuilder<Account, Long> queryBuilder = accountDao.queryBuilder();
+        PreparedQuery<Account> preparedQueryAccount = queryBuilder.prepare();
+        return accountDao.query(preparedQueryAccount);
     }
 
-    public void create(Account location) throws SQLException
+    public void create(Account account) throws SQLException
     {
-        Dao<Account, Long> locationDao = singletonDatabaseHelp.getGenericDatabaseHelper().getAccountDao();
-        locationDao.createIfNotExists(location);
+        Dao<Account, Long> accountDao = singletonDatabaseHelp.getGenericDatabaseHelper().getAccountDao();
+        accountDao.createIfNotExists(account);
     }
 
-    public void update(Account location) throws SQLException
+    public void update(Account account) throws SQLException
     {
-        Dao<Account, Long> locationDao = singletonDatabaseHelp.getGenericDatabaseHelper().getAccountDao();
-        locationDao.update(location);
+        Dao<Account, Long> accountDao = singletonDatabaseHelp.getGenericDatabaseHelper().getAccountDao();
+        accountDao.update(account);
     }
 
     public Account findByUsernameAndPassword(String username, String password) throws SQLException
     {
-        Dao<Account, Long> locationDao = singletonDatabaseHelp.getGenericDatabaseHelper().getAccountDao();
-        QueryBuilder<Account, Long> queryBuilder = locationDao.queryBuilder();
+        Dao<Account, Long> accountDao = singletonDatabaseHelp.getGenericDatabaseHelper().getAccountDao();
+        QueryBuilder<Account, Long> queryBuilder = accountDao.queryBuilder();
         queryBuilder.where()
                 .eq(AccountContract.USERNAME, username)
+                .and()
                 .eq(AccountContract.PASSWORD, password);
         queryBuilder.limit(1l);
-        PreparedQuery<Account> preparedQueryLocation = queryBuilder.prepare();
-        return locationDao.queryForFirst(preparedQueryLocation);
+        PreparedQuery<Account> preparedQueryAccount = queryBuilder.prepare();
+        return accountDao.queryForFirst(preparedQueryAccount);
     }
 }
