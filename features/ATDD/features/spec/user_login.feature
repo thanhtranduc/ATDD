@@ -8,7 +8,7 @@ Feature: Add  order
     When I input 'user_name' as 'Tim'
     And  I input 'password' as '123456'
     And I decide to Login
-    Then I can see my personal information and my orders
+    Then I should see display name and number of orders
 
   Scenario : login fail
     When I input 'user_name' as 'Tim'
