@@ -38,32 +38,32 @@ public class OrderDAO
 
     public List<Order> findAll() throws SQLException
     {
-        Dao<Order, Long> locationDao = singletonDatabaseHelp.getGenericDatabaseHelper().getOrderDao();
-        QueryBuilder<Order, Long> queryBuilder = locationDao.queryBuilder();
-        PreparedQuery<Order> preparedQueryLocation = queryBuilder.prepare();
-        return locationDao.query(preparedQueryLocation);
+        Dao<Order, Long> orderDao = singletonDatabaseHelp.getGenericDatabaseHelper().getOrderDao();
+        QueryBuilder<Order, Long> queryBuilder = orderDao.queryBuilder();
+        PreparedQuery<Order> preparedQueryOrder = queryBuilder.prepare();
+        return orderDao.query(preparedQueryOrder);
     }
 
-    public void create(Order location) throws SQLException
+    public void create(Order order) throws SQLException
     {
-        Dao<Order, Long> locationDao = singletonDatabaseHelp.getGenericDatabaseHelper().getOrderDao();
-        locationDao.createIfNotExists(location);
+        Dao<Order, Long> orderDao = singletonDatabaseHelp.getGenericDatabaseHelper().getOrderDao();
+        orderDao.createIfNotExists(order);
     }
 
-    public void update(Order location) throws SQLException
+    public void update(Order order) throws SQLException
     {
-        Dao<Order, Long> locationDao = singletonDatabaseHelp.getGenericDatabaseHelper().getOrderDao();
-        locationDao.update(location);
+        Dao<Order, Long> orderDao = singletonDatabaseHelp.getGenericDatabaseHelper().getOrderDao();
+        orderDao.update(order);
     }
 
     public Order findByUserId(Long userId) throws SQLException
     {
-        Dao<Order, Long> locationDao = singletonDatabaseHelp.getGenericDatabaseHelper().getOrderDao();
-        QueryBuilder<Order, Long> queryBuilder = locationDao.queryBuilder();
+        Dao<Order, Long> orderDao = singletonDatabaseHelp.getGenericDatabaseHelper().getOrderDao();
+        QueryBuilder<Order, Long> queryBuilder = orderDao.queryBuilder();
         queryBuilder.where()
                 .eq(OrderContract.USERID, userId);
         queryBuilder.limit(1l);
-        PreparedQuery<Order> preparedQueryLocation = queryBuilder.prepare();
-        return locationDao.queryForFirst(preparedQueryLocation);
+        PreparedQuery<Order> preparedQueryOrder = queryBuilder.prepare();
+        return orderDao.queryForFirst(preparedQueryOrder);
     }
 }
