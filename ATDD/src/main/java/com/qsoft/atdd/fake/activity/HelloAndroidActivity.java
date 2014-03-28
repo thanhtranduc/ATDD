@@ -25,7 +25,9 @@ import com.qsoft.atdd.ui.model.Account;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @EActivity(R.layout.activity_main)
 public class HelloAndroidActivity extends Activity
@@ -58,14 +60,25 @@ public class HelloAndroidActivity extends Activity
         CustomerDTO customerDTO = gsonParser.fromJson(result, CustomerDTO.class);
         List<AccountDTO> accountDTOList = customerDTO.getAccountDTOList();
 
+        List<Account> localAccountList = accountService.getAllUser();
+        Map<Long, Account> localMap = new HashMap<Long, Account>();
+        for (Account account : localAccountList)
+        {
+            localMap.put(account.getId(), account);
+        }
+
         for (AccountDTO accountDTO : accountDTOList)
         {
             Account account = accountDTO.toAccount();
-            accountService.create(account);
-            List<OrderDTO> orderDTOList = accountDTO.getOrderDTOList();
-            for (OrderDTO orderDTO : orderDTOList)
+            Account accountCheck = localMap.get(account.getId());
+            if (accountCheck == null)
             {
-                orderService.create(orderDTO.toOrder(account.getId()));
+                accountService.create(account);
+                List<OrderDTO> orderDTOList = accountDTO.getOrderDTOList();
+                for (OrderDTO orderDTO : orderDTOList)
+                {
+                    orderService.create(orderDTO.toOrder(account.getId()));
+                }
             }
         }
 

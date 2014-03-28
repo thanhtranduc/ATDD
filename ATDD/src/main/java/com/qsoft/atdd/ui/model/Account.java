@@ -20,6 +20,8 @@ public class Account
 {
     @DatabaseField(columnName = BaseColumns._ID, generatedId = true)
     @AdditionalAnnotation.DefaultSortOrder
+    Long _id;
+    @DatabaseField
     Long id;
     @DatabaseField
     String displayName;
@@ -32,20 +34,22 @@ public class Account
     {
     }
 
-    public Account(String displayName, String userName, String password)
+    public Account(Long id, String displayName, String userName, String password)
     {
+        this.id = id;
         this.displayName = displayName;
         this.userName = userName;
         this.password = password;
     }
 
-    public ContentValues getContentValues()
+    public Long get_id()
     {
-        ContentValues values = new ContentValues();
-        values.put(AccountContract.DISPLAYNAME, displayName);
-        values.put(AccountContract.USERNAME, userName);
-        values.put(AccountContract.PASSWORD, password);
-        return values;
+        return _id;
+    }
+
+    public void set_id(Long _id)
+    {
+        this._id = _id;
     }
 
     public Long getId()
@@ -95,7 +99,7 @@ public class Account
         {
             return true;
         }
-        if (!(o instanceof Account))
+        if (o == null || getClass() != o.getClass())
         {
             return false;
         }
@@ -106,7 +110,7 @@ public class Account
         {
             return false;
         }
-        if (userName != null ? !userName.equals(account.userName) : account.userName != null)
+        if (id != null ? !id.equals(account.id) : account.id != null)
         {
             return false;
         }
@@ -114,6 +118,21 @@ public class Account
         {
             return false;
         }
+        if (userName != null ? !userName.equals(account.userName) : account.userName != null)
+        {
+            return false;
+        }
+
         return true;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (displayName != null ? displayName.hashCode() : 0);
+        result = 31 * result + (userName != null ? userName.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        return result;
     }
 }

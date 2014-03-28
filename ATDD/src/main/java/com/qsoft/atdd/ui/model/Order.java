@@ -42,16 +42,6 @@ public class Order
         this.description = description;
     }
 
-    public ContentValues getContentValues()
-    {
-        ContentValues values = new ContentValues();
-        values.put(OrderContract.USERID, userId);
-        values.put(OrderContract.ORDERCODE, orderCode);
-        values.put(OrderContract.AMOUNT, amount);
-        values.put(OrderContract.DESCRIPTION, description);
-        return values;
-    }
-
     public Long getId()
     {
         return id;
@@ -109,21 +99,13 @@ public class Order
         {
             return true;
         }
-        if (!(o instanceof Order))
+        if (o == null || getClass() != o.getClass())
         {
             return false;
         }
 
         Order order = (Order) o;
 
-        if (userId != null ? !userId.equals(order.userId) : order.userId != null)
-        {
-            return false;
-        }
-        if (orderCode != null ? !orderCode.equals(order.orderCode) : order.orderCode != null)
-        {
-            return false;
-        }
         if (amount != null ? !amount.equals(order.amount) : order.amount != null)
         {
             return false;
@@ -132,6 +114,25 @@ public class Order
         {
             return false;
         }
+        if (orderCode != null ? !orderCode.equals(order.orderCode) : order.orderCode != null)
+        {
+            return false;
+        }
+        if (userId != null ? !userId.equals(order.userId) : order.userId != null)
+        {
+            return false;
+        }
+
         return true;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        int result = userId != null ? userId.hashCode() : 0;
+        result = 31 * result + (orderCode != null ? orderCode.hashCode() : 0);
+        result = 31 * result + (amount != null ? amount.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        return result;
     }
 }
