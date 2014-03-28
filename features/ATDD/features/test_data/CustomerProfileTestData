@@ -1,0 +1,54 @@
+CUSTOMERS = {
+    :Tim => {# Tim's profile
+             :web_id => 1,
+             :display_name => 'Tim',
+             :user_name => 'tim',
+             :password => '123456',
+             :email => 'tim@qsoft.com',
+             :total => '173,000',
+             #sorted lastest order
+             :order_list => [:Order1, :Order2, :Order3]
+    },
+    :John => {
+                      :web_id => 2,
+                      :display_name => 'John',
+                      :user_name => 'John',
+                      :password => '123456',
+                      :email => 'john@qsoft.com',
+                      :total => '203,000',
+                      :order_list => [:Order4, :Order5]
+    }
+
+}
+ORDER={
+    :Order1 => {
+        :order_code => '0001',
+        :amount => '12,000',
+        :description => '',
+        :date_created => '2014-03-26 09:04:20.894+07'
+    },
+    :Order2 => {
+        :order_code => '0002',
+        :amount => '36,000',
+        :description => '',
+        :date_created => '2014-03-26 10:04:20.894+07'
+    },
+    :Order3 => {
+        :order_code => '0003',
+        :amount => '125,000',
+        :description => '',
+        :date_created => '2014-03-26 10:05:20.894+07'
+    },
+    :Order4 => {
+        :order_code => '0004',
+        :amount => '100,000',
+        :description => '',
+        :date_created => '2014-03-27 10:05:20.894+07'
+    },
+    :Order5 => {
+        :order_code => '0005',
+        :amount => '103,000',
+        :description => '',
+        :date_created => '2014-03-27 10:05:20.894+07'
+    }
+}
