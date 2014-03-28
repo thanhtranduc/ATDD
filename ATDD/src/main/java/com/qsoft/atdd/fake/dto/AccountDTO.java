@@ -1,6 +1,7 @@
 package com.qsoft.atdd.fake.dto;
 
 import com.google.gson.annotations.SerializedName;
+import com.qsoft.atdd.ui.model.Account;
 
 import java.util.List;
 
@@ -70,5 +71,9 @@ public class AccountDTO
     public void setOrderDTOList(List<OrderDTO> orderDTOList)
     {
         this.orderDTOList = orderDTOList;
+    }
+
+    public Account toAccount(){
+        return new Account(displayName, userName, password);
     }
 }
