@@ -1,8 +1,8 @@
 require 'calabash-android/abase'
 
-class LoginScreen < Calabash::ABase
+class UserDetail < Calabash::ABase
   def trait
-    "* id:'login_main'"
+    "* id:'list_goods_llBlockInfo'"
   end
 
 
@@ -17,7 +17,11 @@ class LoginScreen < Calabash::ABase
     self
   end
 
-  def userLogin(field, value)
-   input_data(field,value)
+  def check_order_exist(order, msg)
+    sleep(1)
+    should_see_text(order[:order_code])
+    sleep(1)
+    should_see_text(order[:amount])
   end
+
 end

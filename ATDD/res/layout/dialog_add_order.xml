@@ -2,6 +2,7 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
+
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:padding="@dimen/normal_margin"
@@ -12,7 +13,9 @@
             android:layout_gravity="center"
             />
     <LinearLayout
-            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/dialog_add_order_main"
             android:layout_marginTop="@dimen/normal_margin">
         <TextView
                 style="@style/dialog_add_order_text"

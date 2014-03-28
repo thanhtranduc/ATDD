@@ -41,6 +41,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/small_margin"
                     android:hint="@string/password"
+                    android:password="true"
                     android:singleLine="true"/>
         </LinearLayout>
         <Button

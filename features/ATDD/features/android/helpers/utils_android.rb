@@ -9,6 +9,23 @@
 #  sleep(STEP_PAUSE)
 #end
 #
+
+def input_data(field, value)
+  if field.eql?('userName')
+    query("* id:'login_etUserName'", setText: "#{value}")
+    sleep(STEP_PAUSE)
+  elsif field.eql?('password')
+    sleep(STEP_PAUSE)
+    query("* id:'login_etPass'", setText: "#{value}")
+  elsif field.eql?('order_code')
+    sleep(STEP_PAUSE)
+    query("* id:'dialog_add_order_etNo'", setText: "#{value}")
+  elsif field.eql?('amount')
+    sleep(STEP_PAUSE)
+    query("* id:'dialog_add_order_etAmount'", setText: "#{value}")
+  end
+end
+
 def should_see_text (text)
   puts text
   if text.length > 0
@@ -16,6 +33,7 @@ def should_see_text (text)
     check_element_exists("* text:'#{text}'")
   end
 end
+
 #
 #def convert_and_should_see_text(text)
 #  if text!= "0.00" and text!=""
@@ -46,16 +64,16 @@ def await_element_with_id(id)
   wait_for_elements_exist(["* id:'#{id}'"], options)
 end
 
-#def await_element_with_text(text)
-#  timeout = 100
-#  msg = "time out to wait for text #{text} appear"
-#  options = {:timeout => timeout.to_i,
-#             :retry_frequency => 0.2,
-#             :post_timeout => 0.1,
-#             :timeout_message => msg}
-#  wait_for_elements_exist(["* text:'#{text}'"], options)
-#end
-#
+def await_element_with_text(text)
+  timeout = 100
+  msg = "time out to wait for text #{text} appear"
+  options = {:timeout => timeout.to_i,
+             :retry_frequency => 0.2,
+             :post_timeout => 0.1,
+             :timeout_message => msg}
+  wait_for_elements_exist(["* text:'#{text}'"], options)
+end
+
 def should_see_field(id, text)
   await_element_with_id(id)
   text_expect = query("* id:'#{id}'", :text)[0]
@@ -115,7 +133,7 @@ def fake_go_to_scanned_out_list
   touch "* text:'Scanned Out'"
   sleep STEP_PAUSE
   sleep STEP_PAUSE
-  end
+end
 
 def fake_go_to_untagged_list
   sleep STEP_PAUSE
@@ -127,7 +145,7 @@ def fake_go_to_untagged_list
   touch "* text:'Untagged'"
   sleep STEP_PAUSE
   sleep STEP_PAUSE
-  end
+end
 
 def fake_go_to_nearby_list
   sleep STEP_PAUSE
@@ -140,6 +158,7 @@ def fake_go_to_nearby_list
   sleep STEP_PAUSE
   sleep STEP_PAUSE
 end
+
 def fake_move_all_make_screen
   touch("* text:'SHOW MAKES'")
 end
