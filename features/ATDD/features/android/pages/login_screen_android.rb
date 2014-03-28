@@ -18,6 +18,7 @@ class LoginScreen < Calabash::ABase
   end
 
   def userLogin(field, value)
+    sleep(1)
    input_data(field,value)
   end
 end

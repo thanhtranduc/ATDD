@@ -1,5 +1,5 @@
 CUSTOMERS = {
-    :Tim => {# Tim's profile
+    :tim => {# Tim's profile
              :web_id => 1,
              :display_name => 'Tim',
              :userName => 'tim',
@@ -7,7 +7,7 @@ CUSTOMERS = {
              #sorted lastest order
              :order_list => [:Order1, :Order2, :Order3]
     },
-    :John => {
+    :john => {
         :web_id => 2,
         :display_name => 'john',
         :userName => 'John',

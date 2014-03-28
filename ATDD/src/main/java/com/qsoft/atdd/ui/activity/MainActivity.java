@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.AssetManager;
 import android.support.v4.app.FragmentActivity;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.google.gson.Gson;
 import com.googlecode.androidannotations.annotations.*;
@@ -38,6 +39,8 @@ public class MainActivity extends FragmentActivity
     @ViewById(R.id.login_etPass)
     EditText etPass;
 
+    @ViewById(R.id.textView)
+    TextView textView;
     private Account account;
 
     @Bean
@@ -85,8 +88,7 @@ public class MainActivity extends FragmentActivity
             }
             else
             {
-                Toast.makeText(this, "User or pass incorrect", Toast.LENGTH_SHORT).show();
-
+               textView.setText("Username or password is invalid");
             }
         }
     }
