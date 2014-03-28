@@ -1,0 +1,10 @@
+.DS_Store
+.idea
+*.png
+*.apk
+*.res
+apktool-*
+test_servers/
+cucumber.yml
+.irb-history
+*.sql

@@ -1,0 +1,22 @@
+# config/cucumber.yml
+##YAML Template
+---
+android:  DB_PORT=5432 DB_SERVER_URL="localhost" DB_NAME="prism_blank" DB_USERNAME="postgres" DB_PASSWORD="postgres"
+PLATFORM=android -r features/support -r features/android/support -r features/android/helpers -r
+features/step_definitions -r features/android/pages/
+android_login: PLATFORM=android -r features/support -r features/android/support -r features/android/helpers -r features/step_definitions -r features/android/pages/ --tags @add_blog  DB_PORT=5432 DB_SERVER_URL="localhost" DB_NAME="prism_blank" DB_USERNAME="postgres" DB_PASSWORD="postgres"
+
+ios: DB_PORT=5432 DB_SERVER_URL="localhost" DB_NAME="prism_blank" DB_USERNAME="postgres" DB_PASSWORD="postgres"
+APP_BUNDLE_PATH="/Users/truonghm/Library/Application Support/iPhone Simulator/7.0.3/Applications/EAF834BA-FAC8-4AA3-8232-07B4D167FF50/Prism-cal"
+PLATFORM=ios -r features/support -r features/ios/support -r features/ios/helpers -r features/step_definitions -r
+features/ios/pages SDK_VERSION=6.1
+
+ios_invalid_login: APP_BUNDLE_PATH="/Users/quachngoctam/Library/Application Support/iPhone Simulator/7.0.3/Applications/A0ADD443-51AD-4453-8A85-C58630A570B0/Prism-cal"
+PLATFORM=ios -r features/support -r features/ios/support -r features/ios/helpers -r features/step_definitions -r
+features/ios/pages --tags @invalid_login
+
+
+---
+android: --tags ~@android_ignore --tags ~@manual DB_PORT=5432 DB_SERVER_URL="localhost" DB_NAME="prism_blank" DB_USERNAME="postgres" DB_PASSWORD="postgres" PLATFORM=android -r features/support -r features/android/support -r features/android/helpers -r features/step_definitions -r features/android/pages/
+
+ios: --tags ~@ios_ignore --tags ~@manual DB_PORT=5432 DB_SERVER_URL="localhost" DB_NAME="prism_blank" DB_USERNAME="postgres" DB_PASSWORD="postgres" APP_BUNDLE_PATH="ServiceLogistic/build/Applications/Service Logistics.app" PLATFORM=ios -r features/support -r features/ios/support -r features/ios/helpers -r features/step_definitions -r features/ios/pages
