@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import com.qsoft.atdd.R;
+import com.qsoft.atdd.common.utils.CurrencyConvert;
 import com.qsoft.atdd.ui.model.Order;
 import org.apache.commons.lang3.StringUtils;
 
@@ -46,7 +47,7 @@ public class OrderAdapter extends ArrayAdapter<Order>
         if (order != null)
         {
             showView(order.getOrderCode(), tvOrderCode);
-            String amount=order.getAmount()+"";
+            String amount= CurrencyConvert.formatNumberForMoney(order.getAmount().replace(",","").trim())+" VND";
             showView(amount, tvAmount);
         }
         return v;

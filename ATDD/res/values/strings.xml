@@ -12,7 +12,7 @@
     <string name="total">You have 3 orders</string>
     <string name="order">0001</string>
     <string name="order_price">125,000VND</string>
-    <string name="total_title">Total</string>
+    <string name="total_title">Total:</string>
     <string name="logout">Logout</string>
     <string name="dialog_add_order_tvTitle">Add Order</string>
     <string name="no">No</string>
@@ -21,6 +21,7 @@
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
     <string name="orderCode">0001</string>
+    <string name="currency">VND</string>
 
 
 </resources>

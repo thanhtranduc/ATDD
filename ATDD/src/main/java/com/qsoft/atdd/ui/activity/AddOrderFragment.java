@@ -47,12 +47,12 @@ public class AddOrderFragment extends DialogFragment
     @Bean
     OrderServiceImpl orderService;
 
-    public Long userId=null;
+    public Long userId = null;
 
     @AfterViews
     void init()
     {
-        userId= getArguments().getLong(Const.USER_ID);
+        userId = getArguments().getLong(Const.USER_ID);
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         getDialog().getWindow().setGravity(Gravity.CENTER_HORIZONTAL);
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(android.R.style.Theme_Translucent_NoTitleBar));
@@ -118,31 +118,58 @@ public class AddOrderFragment extends DialogFragment
     @Click(R.id.dialog_add_order_btSave)
     void doSave()
     {
-        Order order=new Order();
+        Order order = new Order();
         boolean saved = false;
-        if(!StringUtils.isEmpty(edOrderCode.getText()) ){
-            order.setOrderCode(edOrderCode.getText().toString());
-            if(!StringUtils.isEmpty(edAmount.getText())){
-                order.setAmount(edAmount.getText().toString());
-                order.setUserId(userId);
-                saved =true;
-            } else{
-                saved =false;
-                tvMessage.setText(Const.ADD_ORDER_MESSAGE_ERROR);
+        if (!StringUtils.isEmpty(edOrderCode.getText()))
+        {
+            String orderCode = edOrderCode.getText().toString();
+            order.setOrderCode(orderCode);
+            try
+            {
+                Boolean isValid = orderService.validOrderCode(orderCode);
+                if (!StringUtils.isEmpty(edAmount.getText()) && isValid)
+                {
+                    order.setAmount(edAmount.getText().toString());
+                    order.setUserId(userId);
+                    saved = true;
+                }
+                else
+                {
+                    if (!isValid)
+                    {
+                        tvMessage.setText(Const.ORDER_CODE_MESSAGE_ERROR);
+
+                    }
+                    else
+                    {
+                        tvMessage.setText(Const.ADD_ORDER_MESSAGE_ERROR);
+                    }
+                    saved = false;
+
+                }
             }
-        }  else{
-            saved =false;
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+
+        }
+        else
+        {
+            saved = false;
             tvMessage.setText(Const.ADD_ORDER_MESSAGE_ERROR);
         }
-        if(!StringUtils.isEmpty(edDescription.getText()) ){
+        if (!StringUtils.isEmpty(edDescription.getText()))
+        {
             order.setDescription(edDescription.getText().toString());
         }
-        if(saved){
+        if (saved)
+        {
             try
             {
                 orderService.create(order);
                 this.dismiss();
-                ((ShowListOrderActivity)getActivity()).notifyChange();
+                ((ShowListOrderActivity) getActivity()).notifyChange();
             }
             catch (SQLException e)
             {
@@ -152,7 +179,8 @@ public class AddOrderFragment extends DialogFragment
     }
 
     @Click(R.id.dialog_add_order_btCancel)
-    void doCancel(){
+    void doCancel()
+    {
         this.dismiss();
 
     }

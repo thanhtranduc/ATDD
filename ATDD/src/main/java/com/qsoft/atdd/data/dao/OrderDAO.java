@@ -65,4 +65,23 @@ public class OrderDAO
         PreparedQuery<Order> preparedQueryOrder = queryBuilder.prepare();
         return orderDao.query(preparedQueryOrder);
     }
+
+    public boolean validOrderCode(String orderCode) throws SQLException
+    {
+        if (orderCode == null)
+        {
+            return false;
+        }
+        Dao<Order, String> orderDao = singletonDatabaseHelp.getGenericDatabaseHelper().getOrderDaoTypeString();
+        QueryBuilder<Order, String> queryBuilder = orderDao.queryBuilder();
+        queryBuilder.where()
+                .eq(OrderContract.ORDERCODE, orderCode);
+        PreparedQuery<Order> preparedQueryOrder = queryBuilder.prepare();
+        int numOfOrder = orderDao.query(preparedQueryOrder).size();
+        if (numOfOrder > 0)
+        {
+            return false;
+        }
+        return true;
+    }
 }

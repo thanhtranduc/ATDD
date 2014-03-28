@@ -209,5 +209,9 @@ public class GenericDatabaseHelper extends OrmLiteSqliteOpenHelper
     {
         return getDao(Order.class, Long.class);
     }
+    public Dao<Order, String> getOrderDaoTypeString() throws SQLException
+    {
+        return getDao(Order.class, String.class);
+    }
 }
 

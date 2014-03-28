@@ -46,7 +46,8 @@
                 android:layout_height="wrap_content"
                 android:singleLine="true"
                 android:background="@android:color/white"
-                android:hint="@string/amount"/>
+                android:hint="@string/currency"
+                android:inputType="number"/>
     </LinearLayout>
 
     <TextView

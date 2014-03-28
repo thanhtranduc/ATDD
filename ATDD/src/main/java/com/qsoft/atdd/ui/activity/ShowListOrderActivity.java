@@ -4,22 +4,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ListView;
 
 import android.widget.TextView;
 import com.googlecode.androidannotations.annotations.*;
 import com.qsoft.atdd.R;
 import com.qsoft.atdd.common.utils.Const;
+import com.qsoft.atdd.common.utils.CurrencyConvert;
 import com.qsoft.atdd.service.AccountServiceImpl;
 import com.qsoft.atdd.service.OrderServiceImpl;
 import com.qsoft.atdd.ui.adapter.OrderAdapter;
 import com.qsoft.atdd.ui.model.Order;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -66,7 +63,7 @@ public class ShowListOrderActivity extends FragmentActivity
     {
         try
         {
-            List<Order> orderList = orderService.findByUserId(userId);
+            List<Order> orderList = orderService.getOrdersByUserId(userId);
             Double totalPrice = 0d;
             if (orderList != null)
             {
@@ -78,10 +75,8 @@ public class ShowListOrderActivity extends FragmentActivity
                     totalPrice += Double.parseDouble(amount);
                 }
             }
-            tvTotalPrice.setText(totalPrice + "");
+            tvTotalPrice.setText(CurrencyConvert.formatNumberForMoney(totalPrice + "") +" VND");
             lvListOrders.setAdapter(new OrderAdapter(this, -1, orderList));
-            lvListOrders.measure(ViewGroup.MeasureSpec.makeMeasureSpec(0, ViewGroup.MeasureSpec.UNSPECIFIED),
-                    ViewGroup.MeasureSpec.makeMeasureSpec(0, ViewGroup.MeasureSpec.UNSPECIFIED));
 
         }
         catch (SQLException e)
