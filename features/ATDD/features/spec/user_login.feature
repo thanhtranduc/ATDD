@@ -6,7 +6,7 @@ Feature: Login
 
   Scenario: dummy
 
-  Scenario : login successfully
+  Scenario: login successfully
     When I input 'username' as 'tim'
     And  I input 'password' as '123456'
     And I decide to Login

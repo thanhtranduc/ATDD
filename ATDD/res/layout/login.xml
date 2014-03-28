@@ -51,5 +51,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/login"
                 android:background="@android:color/holo_blue_dark"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:id="@+id/textView"
+                android:textColor="@color/red"
+                android:layout_gravity="right|center_vertical"/>
     </LinearLayout>
 </LinearLayout>

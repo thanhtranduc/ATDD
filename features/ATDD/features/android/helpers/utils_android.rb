@@ -11,7 +11,7 @@
 #
 
 def input_data(field, value)
-  if field.eql?('userName')
+  if field.eql?('username')
     query("* id:'login_etUserName'", setText: "#{value}")
     sleep(STEP_PAUSE)
   elsif field.eql?('password')
@@ -32,6 +32,11 @@ def should_see_text (text)
     await_element_with_text(text)
     check_element_exists("* text:'#{text}'")
   end
+end
+
+
+def format_money(number, delimiter = ',')
+  number.to_s.reverse.gsub(%r{([0-9]{3}(?=([0-9])))}, "\\1#{delimiter}").reverse
 end
 
 #

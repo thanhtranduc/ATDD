@@ -1,9 +1,7 @@
 Given(/^I am on order list screen of (.*)$/) do |customer|
-  sleep(1)
-  touch("* text:'RUN SQL'")
   @loginScreen = page(LoginScreen).await
   puts customer
-  @loginScreen.userLogin("userName", customer)
+  @loginScreen.userLogin("username", customer)
   pass = CUSTOMERS[customer.to_sym][:password]
   @loginScreen.userLogin("password", pass)
   sleep(1)
@@ -12,6 +10,7 @@ Given(/^I am on order list screen of (.*)$/) do |customer|
 end
 
 And(/^I select add new order$/) do
+  sleep(1)
   touch("* id:'list_goods_btAdd'")
 end
 
