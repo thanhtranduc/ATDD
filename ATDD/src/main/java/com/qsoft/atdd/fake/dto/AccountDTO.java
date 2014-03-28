@@ -74,6 +74,6 @@ public class AccountDTO
     }
 
     public Account toAccount(){
-        return new Account(displayName, userName, password);
+        return new Account(id, displayName, userName, password);
     }
 }
