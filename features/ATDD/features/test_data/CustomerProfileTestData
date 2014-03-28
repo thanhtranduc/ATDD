@@ -9,7 +9,7 @@ CUSTOMERS = {
     },
     :John => {
         :web_id => 2,
-        :display_name => 'John',
+        :display_name => 'john',
         :userName => 'John',
         :password => '123456',
         :order_list => [:Order4, :Order5]
@@ -34,11 +34,11 @@ ORDER={
     :Order4 => {
         :order_code => '0004',
         :amount => '100,000',
-        :description => '',
+        :description => 'description1',
     },
     :Order5 => {
         :order_code => '0005',
         :amount => '103,000',
-        :description => '',
+        :description => 'description2',
     }
 }
