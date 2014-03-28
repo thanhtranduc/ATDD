@@ -45,6 +45,6 @@ And(/^I should see order price of customer and total price$/) do |table|
   end
   puts "aaaaaaaaaaaa"
   puts format_money("%.2f"%(total)).to_s
-  expect_total = format_money("%.2f"%(total)).to_s
-  should_see_text(expect_total + ' VND')
+  expect_total = format_money("%.2f"%(total)).to_s + ' VND'
+  should_see_text(expect_total)
 end

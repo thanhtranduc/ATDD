@@ -26,5 +26,5 @@ end
 
 Then(/^I should see new order in my order list$/) do
   should_see_text('00111')
-  should_see_text('20000')
+  should_see_text(format_money("%.2f"%(20000)).to_s + ' VND')
 end
