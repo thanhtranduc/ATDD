@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white">
+    <TextView
+            android:id="@+id/list_order_tvOrderName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/order"
+            android:textSize="@dimen/size_text_header_info"
+            android:textColor="@android:color/black"
+            />
+    <ImageView
+            android:id="@+id/list_order_ivShowDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:background="@drawable/bt_next_blue"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"/>
+    <TextView
+            android:id="@+id/list_order_tvOrderPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/list_order_ivShowDetail"
+            android:text="@string/order_price"
+            android:textSize="@dimen/size_text_header_info"
+            android:textColor="@android:color/black"/>
+</RelativeLayout>
