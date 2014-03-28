@@ -30,8 +30,16 @@ public class Order
     @DatabaseField
     String description;
 
+    //CONSTRUCTOR
     public Order()
     {
+    }
+
+    public Order(String orderCode, String amount, String description)
+    {
+        this.orderCode = orderCode;
+        this.amount = amount;
+        this.description = description;
     }
 
     public Order(Long userId, String orderCode, String amount, String description)
@@ -52,6 +60,7 @@ public class Order
         return values;
     }
 
+    //SETTER && GETTER
     public Long getId()
     {
         return id;

@@ -10,6 +10,7 @@ import com.googlecode.androidannotations.annotations.EActivity;
 import com.googlecode.androidannotations.annotations.ViewById;
 import com.qsoft.atdd.R;
 import com.qsoft.atdd.common.helper.HolderSingletonFactory;
+import com.qsoft.atdd.common.utils.Const;
 import com.qsoft.atdd.service.AccountServiceImpl;
 import com.qsoft.atdd.ui.model.Account;
 import org.apache.commons.lang3.StringUtils;
@@ -53,7 +54,8 @@ public class MainActivity extends FragmentActivity
             if (account != null)
             {
                 Intent intent = new Intent(this, ShowListOrderActivity_.class);
-                intent.putExtra("USER_ID", account.getId());
+                intent.putExtra(Const.USER_ID, account.getId());
+                intent.putExtra(Const.DISPLAY_NAME, account.getDisplayName());
                 startActivity(intent);
             }
             else

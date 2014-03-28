@@ -1,6 +1,9 @@
 package com.qsoft.atdd.ui.activity;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
@@ -8,14 +11,17 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.BaseAdapter;
 import android.widget.EditText;
-import com.googlecode.androidannotations.annotations.AfterViews;
-import com.googlecode.androidannotations.annotations.Click;
-import com.googlecode.androidannotations.annotations.EFragment;
-import com.googlecode.androidannotations.annotations.ViewById;
+import android.widget.TextView;
+import com.googlecode.androidannotations.annotations.*;
 import com.qsoft.atdd.R;
+import com.qsoft.atdd.common.utils.Const;
+import com.qsoft.atdd.service.OrderServiceImpl;
 import com.qsoft.atdd.ui.model.Order;
 import org.apache.commons.lang3.StringUtils;
+
+import java.sql.SQLException;
 
 /**
  * Created by thinhdd on 3/28/14.
@@ -35,9 +41,18 @@ public class AddOrderFragment extends DialogFragment
     @ViewById(R.id.dialog_add_order_etDescription)
     EditText edDescription;
 
+    @ViewById(R.id.dialog_add_order_tvMessage)
+    TextView tvMessage;
+
+    @Bean
+    OrderServiceImpl orderService;
+
+    public Long userId=null;
+
     @AfterViews
     void init()
     {
+        userId= getArguments().getLong(Const.USER_ID);
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         getDialog().getWindow().setGravity(Gravity.CENTER_HORIZONTAL);
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(android.R.style.Theme_Translucent_NoTitleBar));
@@ -104,13 +119,42 @@ public class AddOrderFragment extends DialogFragment
     void doSave()
     {
         Order order=new Order();
-        if(!StringUtils.isEmpty(edOrderCode.getText())){
-
+        boolean saved = false;
+        if(!StringUtils.isEmpty(edOrderCode.getText()) ){
+            order.setOrderCode(edOrderCode.getText().toString());
+            if(!StringUtils.isEmpty(edAmount.getText())){
+                order.setAmount(edAmount.getText().toString());
+                order.setUserId(userId);
+                saved =true;
+            } else{
+                saved =false;
+                tvMessage.setText(Const.ADD_ORDER_MESSAGE_ERROR);
+            }
+        }  else{
+            saved =false;
+            tvMessage.setText(Const.ADD_ORDER_MESSAGE_ERROR);
+        }
+        if(!StringUtils.isEmpty(edDescription.getText()) ){
+            order.setDescription(edDescription.getText().toString());
+        }
+        if(saved){
+            try
+            {
+                orderService.create(order);
+                this.dismiss();
+                ((ShowListOrderActivity)getActivity()).notifyChange();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
         }
     }
 
     @Click(R.id.dialog_add_order_btCancel)
     void doCancel(){
         this.dismiss();
+
     }
+
 }

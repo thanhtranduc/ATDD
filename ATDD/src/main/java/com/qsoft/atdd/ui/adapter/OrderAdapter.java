@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import com.qsoft.atdd.R;
-import com.qsoft.atdd.ui.dto.OrderDTO;
+import com.qsoft.atdd.ui.model.Order;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
@@ -16,16 +16,16 @@ import java.util.List;
  * User: khiemnt
  * Date: 3/28/14
  */
-public class OrderAdapter extends ArrayAdapter<OrderDTO>
+public class OrderAdapter extends ArrayAdapter<Order>
 {
     private Context context;
-    private List<OrderDTO> orderList;
+    private List<Order> orderList;
 
     TextView tvOrderCode;
     TextView tvAmount;
     TextView tvDescription;
 
-    public OrderAdapter(Context context, int textViewResourceId, List<OrderDTO> orderList)
+    public OrderAdapter(Context context, int textViewResourceId, List<Order> orderList)
     {
         super(context, textViewResourceId, orderList);
         this.orderList = orderList;
@@ -41,7 +41,7 @@ public class OrderAdapter extends ArrayAdapter<OrderDTO>
             LayoutInflater vi = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = vi.inflate(R.layout.list_order_item, null);
         }
-        OrderDTO order = orderList.get(position);
+        Order order = orderList.get(position);
         setUpViewFindByID(v);
 
         if (order != null)
@@ -73,4 +73,5 @@ public class OrderAdapter extends ArrayAdapter<OrderDTO>
         tvAmount = (TextView) v.findViewById(R.id.list_item_tvAmount);
         tvDescription = (TextView) v.findViewById(R.id.list_item_description);
     }
+
 }
