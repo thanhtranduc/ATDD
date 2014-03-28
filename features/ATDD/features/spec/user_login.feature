@@ -7,15 +7,15 @@ Feature: Login
   Scenario: dummy
 
   Scenario : login successfully
-    When I input 'userName' as 'tim'
+    When I input 'username' as 'tim'
     And  I input 'password' as '123456'
     And I decide to Login
-    Then I should see display name and number of orders
+    Then I should see display name
 
-  Scenario : Login fail
-    When I input 'userName' as 'tim'
+  Scenario: Login fail
+    When I input 'username' as 'tim'
     And  I input 'password' as '12345678'
     And I decide to Login
-    Then I should see the error message "userName or password is invalid"
+    Then I should see the error message "Username or password is invalid"
 
 
