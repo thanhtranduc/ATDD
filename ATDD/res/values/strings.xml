@@ -10,7 +10,7 @@
     <string name="login">Login</string>
     <string name="account_name">Hello Tim</string>
     <string name="total">You have 3 orders</string>
-    <string name="order">Order1</string>
+    <string name="order">0001</string>
     <string name="order_price">125,000VND</string>
     <string name="total_title">Total</string>
     <string name="logout">Logout</string>
@@ -20,5 +20,6 @@
     <string name="description">Description</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
+    <string name="orderCode">0001</string>
 
 </resources>

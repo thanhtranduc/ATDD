@@ -8,9 +8,14 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
 import com.googlecode.androidannotations.annotations.AfterViews;
+import com.googlecode.androidannotations.annotations.Click;
 import com.googlecode.androidannotations.annotations.EFragment;
+import com.googlecode.androidannotations.annotations.ViewById;
 import com.qsoft.atdd.R;
+import com.qsoft.atdd.ui.model.Order;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Created by thinhdd on 3/28/14.
@@ -20,6 +25,15 @@ public class AddOrderFragment extends DialogFragment
 {
     private boolean isDialogShownBool;
     private int numberDialogShowRequest;
+
+    @ViewById(R.id.dialog_add_order_etNo)
+    EditText edOrderCode;
+
+    @ViewById(R.id.dialog_add_order_etAmount)
+    EditText edAmount;
+
+    @ViewById(R.id.dialog_add_order_etDescription)
+    EditText edDescription;
 
     @AfterViews
     void init()
@@ -84,5 +98,19 @@ public class AddOrderFragment extends DialogFragment
     {
         super.onResume();
         getDialog().getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+    }
+
+    @Click(R.id.dialog_add_order_btSave)
+    void doSave()
+    {
+        Order order=new Order();
+        if(!StringUtils.isEmpty(edOrderCode.getText())){
+
+        }
+    }
+
+    @Click(R.id.dialog_add_order_btCancel)
+    void doCancel(){
+        this.dismiss();
     }
 }
